@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: microservice-config-client
+
+  cloud:
+    config:
+      profile: prod  #配置服务中心的{profile}
+      uri: http://localhost:8888/    #配置中心地址
+      label: master  #对应git中的分支,默认为master
+server:
+  port: 8801
+management:
+  security:
+    enabled: false   #是否开启actuator安全认证
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health

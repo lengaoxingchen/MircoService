@@ -1,0 +1,19 @@
+server:
+  port: 8050 #指定该Eureka实例的端口号
+eureka:
+  instance:
+    prefer-ip-address: true #是否显示主机的ip
+  client:
+    service-url:
+      defautZone: http://localhost:8761/eureka/   # 指定Eureka服务端地址
+spring:
+  application:
+    name: microservice-gateway-zuul # 指定应用名称
+
+
+zuul:
+  routes:
+    order-serviceId:    # zuul的唯一标识
+      path: /order/**
+      service-id: microservice-eureka-order      #Eureka中的serviceId
+  #ignored-services:    # 标识被忽略的服务,该配置下的服务将不会被路由
