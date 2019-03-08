@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: gateway-zuul # 指定应用名称
+server:
+  port: 8050
+
+eureka:
+  client:
+    service-url:
+      default: http://localhost:8761/eureka/
+      #上线测试需要使用以下配置,eureka-server表示对应的服务名称
+      #default: http://eureka-server:8761/eureka/
+zuul:
+  ignored-services: '*'
+  routes:
+    user-service:
+      path: /user-service/**
+      serviceId: user-service
+    order-service:
+      path: /order-service/**
+      serviceId: order-service
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+

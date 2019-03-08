@@ -1,0 +1,22 @@
+#数据库配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.232.129:3306/microservice_mallmanagement
+    # 与Docker整合时可使用以下配置(也可以使用具体的IP+端口)
+    #     url: jdbc:mysql://mysql:3306/microservice_mallmanagement
+    username: root
+    password: root
+  application:
+    name: order-service # 指定应用名称
+
+server:
+  port: 7900  #指定Eureka实例的端口号
+eureka:
+  client:
+    # 配置Eureka注册中心地址
+    service-url:
+      default-url: http://localhost:8761/eureka/
+      #上线测试需要使用以下配置
+      #default-url: http://eureka:8761/eureka/
+
